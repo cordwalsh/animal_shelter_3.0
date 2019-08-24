@@ -1,30 +1,30 @@
-# change this
 
-class QuotesController < ApplicationController
+
+class PetsController < ApplicationController
 
   def index
-    @quotes = Quote.all
-    json_response(@quotes)
+    @pets = Pet.all
+    json_response(@pets)
   end
 
   def show
-    @quote = Quote.find(params[:id])
-    json_response(@quote)
+    @pet = Pet.find(params[:id])
+    json_response(@pet)
   end
 
   def create
-    @quote = Quote.create(quote_params)
-    json_response(@quote)
+    @pet = Pet.create(pet_params)
+    json_response(@pet)
   end
 
   def update
-    @quote = Quote.find(params[:id])
-    @quote.update(quote_params)
+    @pet = Pet.find(params[:id])
+    @pet.update(pet_params)
   end
 
   def destroy
-    @quote = Quote.find(params[:id])
-    @quote.destroy
+    @pet = Pet.find(params[:id])
+    @pet.destroy
   end
 
   private
@@ -32,7 +32,7 @@ class QuotesController < ApplicationController
     render json: object, status: status
   end
 
-  def quote_params
-    params.permit(:author, :content)
+  def pet_params
+    params.permit(:name, :type_of_animal, :sex, :age)
   end
 end
