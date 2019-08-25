@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe "get all quotes route", :type => :request do
-  let!(:quotes) { FactoryBot.create_list(:quote, 20)}
+describe "get all pets route", :type => :request do
+  let!(:pets) { FactoryBot.create_list(:pet, 20)}
 
-  before { get '/quotes'}
+  before { get '/pets'}
 
-  it 'returns all quotes' do
+  it 'returns all pets' do
     expect(JSON.parse(response.body).size).to eq(20)
   end
 
