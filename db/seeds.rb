@@ -1,20 +1,20 @@
-# seed this file
-
 
 class Seed
 
   def self.begin
     seed = Seed.new
-    seed.generate_quotes
+    seed.generate_pets
   end
 
-  def generate_quotes
+  def generate_pets
     20.times do |i|
-      quote = Quote.create!(
-        author: Faker::Book.author,
-        content: Faker::Movie.quote
+      pet = Pet.create!(
+        name: Faker::Name.name,
+        type_of_animal: Faker::Creature::Animal.name,
+        sex: Faker::Creature::Dog.gender,
+        age: rand(1..15)
       )
-      puts "Quote #{i}: Author is #{quote.author} and quotation is '#{quote.content}'."
+      puts "Pet #{i}: name is #{pet.name} and type is #{pet.type_of_animal} and sex is #{pet.sex} and age is #{pet.age}."
     end
   end
 end
