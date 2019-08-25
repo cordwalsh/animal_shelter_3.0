@@ -31,6 +31,17 @@ class PetsController < ApplicationController
     @pet.destroy
   end
 
+  def random
+    @pet = Pet.random
+    json_response(@pet)
+  end
+
+  def search_name
+    @name = params[:name]
+    @query = Pet.search_breed(@name)
+    json_response(@query)
+  end
+
   private
   def json_response(object, status = :ok)
     render json: object, status: status
